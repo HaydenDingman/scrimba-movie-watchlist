@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <!-- FONT AWESOME -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <title>Find Your Film</title>
 </head>
+
 <body>
     <header>
         <div class="site-info">
@@ -19,14 +25,20 @@
             <nav>My Watchlist</nav>
         </div>
         <form>
-            <label for="movie-search" aria-label="Search for a movie"><i class="fa-solid fa-magnifying-glass"></i></label>
-            <input type="text" class="movie-search" id="movie-search" name="movie-search" placeholder="Search for a movie" aria-label="Search for a movie">
+            <label for="movie-search" aria-label="Search for a movie"><i
+                    class="fa-solid fa-magnifying-glass"></i></label>
+            <input type="text" class="movie-search" id="movie-search" name="movie-search"
+                placeholder="Search for a movie" aria-label="Search for a movie">
             <button class="search-btn" id="search-btn">Search</button>
         </form>
     </header>
     <main>
-        <i class="fa-solid fa-film"></i>
+        <div class="movie-container">
+            <i class="fa-solid fa-film"></i>
+            <p class="placeholder-text">Start exploring</p>
+        </div>
     </main>
     <script src="index.js"></script>
 </body>
+
 </html>
