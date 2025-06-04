@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("./images/movie-watchlist.png");
+    background-color: #383838;
+    background-size: cover; 
+    background-blend-mode: darken;
+    height: 20vh;
+    position: relative; 
+}
+
+.site-info {
+    padding: 5em 2.5em 1em;
+    width: 100vw;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    color: white;
+}
+
+.title {
+    margin: 0;
+    font-size: 2.75rem;
+}
+
+nav {
+    font-size: 1.25rem;
+}
+
+form {
+    display:flex;
+    background-color: #fff;
+    width: 50vw;
+    min-width: max-content;
+    height: max-content;
+    justify-content: space-between;
+    border: 1px solid #D1D5DB;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -15px;
+}
+
+.movie-search,
+.fa-magnifying-glass,
+.search-btn {
+    padding: 0.5em;
+}
+
+.fa-magnifying-glass {
+    color: #9CA3AF;
+    max-width: min-content;
+    max-height: 100%;
+}
+
+.movie-search {
+    border: none;
+    flex: 1;
+}
+
+.search-btn {
+    border: none;
+    background-color: #F9FAFB;
+    max-width: 10vw;
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid #D1D5DB;
+}
