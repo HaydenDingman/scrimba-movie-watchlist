@@ -154,16 +154,36 @@ hr {
 
 .film div {
     display: flex;
-    align-items: center;
+    align-items: baseline;
 }
 
 .film>div {
     gap: 2em;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .add-to-watchlist,
 .rating {
-    gap: 0.1em;
+    gap: 0.5em;
+}
+
+.add-to-watchlist {
+    margin-left: auto;
+}
+
+.add-to-watchlist * {
+    pointer-events: none;
+}
+
+.add-to-watchlist:hover,
+.add-to-watchilist:focus {
+    color: #FF5765;;
+    cursor: pointer;
+}
+
+.add-to-watchlist:active {
+    color: #bc404a;
 }
 
 .film-title {
@@ -171,11 +191,13 @@ hr {
 }
 
 .film p {
-    margin: 0.5em;
+    margin: 0;
 }
 
 .film-details {
     color: #111827;
+    width: 70%;
+    display: flex;
 }
 
 .fa-star {
