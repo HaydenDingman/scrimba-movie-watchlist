@@ -17,7 +17,7 @@ document.addEventListener("submit", (e) => {
 async function fetchSearchResults() {
     placeholder.innerHTML = `<p class="placeholder-text">Fetching results...</p>`
     
-    const res = await fetch(`http://www.omdbapi.com/?apikey=32eb1eab&s=${filmSearchInput.value}&plot=full`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=32eb1eab&s=${filmSearchInput.value}&plot=full`);
     const films = await res.json();
     
     let filmHtml = "";
@@ -40,7 +40,7 @@ async function renderResults(filmToSearch) {
     if (localStorage.getItem(`${filmToSearch}`)) {
         film = JSON.parse(localStorage.getItem(`${filmToSearch}`));
     } else {
-        const res = await fetch(`http://www.omdbapi.com/?apikey=32eb1eab&i=${filmToSearch}&plot=short`);
+        const res = await fetch(`https://www.omdbapi.com/?apikey=32eb1eab&i=${filmToSearch}&plot=short`);
         film = await res.json();
         localStorage.setItem(filmToSearch, JSON.stringify(film));
     }
