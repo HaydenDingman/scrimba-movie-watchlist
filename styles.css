@@ -68,7 +68,7 @@ form {
 .film-search,
 .fa-magnifying-glass,
 .search-btn {
-    padding: 0.5em;
+    padding: 1em;
 }
 
 .fa-magnifying-glass {
@@ -104,6 +104,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 80vh;
     padding-top: 5em;
     padding-bottom: 5em;
 }
@@ -142,7 +143,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1em;
+    gap: 2em;
     overflow-y: hidden;
 }
 
@@ -250,5 +251,42 @@ hr:last-child {
 
     hr {
         width: 50vw;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .film-container {
+        background-color: #121212;
+    }
+
+    form {
+        border: none;
+    }
+
+    .film-search,
+    .fa-magnifying-glass {
+        background-color: #2E2E2F;
+        color: #A5A5A5;
+    }
+
+    .search-btn {
+        background-color: #4B4B4B;
+        border-left: 1px solid #4B4B4B;
+    }
+
+    .film-card,
+    .film-details,
+    .watchlist-prompt,
+    .search-btn {
+        color: #fff;
+    }
+
+    .film-plot {
+        color: #A5A5A5;
+    }
+
+    .fa-film,
+    .placeholder-text {
+        color: #787878;
     }
 }
