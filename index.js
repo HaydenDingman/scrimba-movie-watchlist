@@ -1,5 +1,6 @@
 const filmSearchInput = document.getElementById("film-search");
 const filmContainer = document.getElementById("film-container");
+const placeholder = document.getElementById("placeholder");
 
 
 filmContainer.addEventListener("click", (e) => {
@@ -14,7 +15,7 @@ document.addEventListener("submit", (e) => {
 })
 
 async function fetchSearchResults() {
-    filmContainer.innerHTML = `<p class="placeholder-text">Fetching results...</p>`
+    placeholder.innerHTML = `<p class="placeholder-text">Fetching results...</p>`
     
     const res = await fetch(`http://www.omdbapi.com/?apikey=32eb1eab&s=${filmSearchInput.value}&plot=full`);
     const films = await res.json();
@@ -22,7 +23,7 @@ async function fetchSearchResults() {
     let filmHtml = "";
 
     if (films.Response === "False") {
-        filmHtml = `<p class="placeholder-text">Unable to find what you're looking for. Please try another search.</p>`
+        filmHtml = `<div class="placeholder"><p class="placeholder-text">Unable to find what you're looking for. Please try another search.</p></div>`
     } else {
         const filmArray = films.Search.map(film => film.imdbID);
         for (let filmToSearch of filmArray) {
