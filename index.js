@@ -1,15 +1,16 @@
 const filmSearchInput = document.getElementById("film-search");
 const filmContainer = document.getElementById("film-container");
 
-document.addEventListener("submit", (e) => {
-    e.preventDefault();
-    fetchSearchResults();
-})
 
 filmContainer.addEventListener("click", (e) => {
     if (e.target.dataset.id) {
         handleWatchlistClick(e.target.dataset.id);
     }
+})
+
+document.addEventListener("submit", (e) => {
+    e.preventDefault();
+    fetchSearchResults();
 })
 
 async function fetchSearchResults() {
@@ -18,11 +19,15 @@ async function fetchSearchResults() {
     const res = await fetch(`http://www.omdbapi.com/?apikey=32eb1eab&s=${filmSearchInput.value}&plot=full`);
     const films = await res.json();
     
-    const filmArray = films.Search.map(film => film.imdbID);
     let filmHtml = "";
-    
-    for (let filmToSearch of filmArray) {
-        filmHtml += await renderResults(filmToSearch);
+
+    if (films.Response === "False") {
+        filmHtml = `<p class="placeholder-text">Unable to find what you're looking for. Please try another search.</p>`
+    } else {
+        const filmArray = films.Search.map(film => film.imdbID);
+        for (let filmToSearch of filmArray) {
+            filmHtml += await renderResults(filmToSearch);
+        }
     }
 
     filmContainer.innerHTML = await filmHtml;
@@ -32,10 +37,8 @@ async function renderResults(filmToSearch) {
     let film;
 
     if (localStorage.getItem(`${filmToSearch}`)) {
-        console.log("Found");
         film = JSON.parse(localStorage.getItem(`${filmToSearch}`));
     } else {
-        console.log("Not found");
         const res = await fetch(`http://www.omdbapi.com/?apikey=32eb1eab&i=${filmToSearch}&plot=short`);
         film = await res.json();
         localStorage.setItem(filmToSearch, JSON.stringify(film));
@@ -76,7 +79,7 @@ async function renderResults(filmToSearch) {
 function handleWatchlistClick(filmID) {
     const filmToAdd = JSON.parse(localStorage.getItem(`${filmID}`))
     if (localStorage.getItem("watchlist")) {
-        let watchlist = JSON.parse(localStorage.getItem("watchlist"));
+        let watchlist = getWatchlist();
         
         if (isAlreadyInWatchlist(filmID)) {
             const index = watchlist.findIndex((film) => filmID === film.imdbID);
@@ -91,7 +94,7 @@ function handleWatchlistClick(filmID) {
                                                                         <p>Remove</p>`
         }
     } else {
-        localStorage.setItem("watchlist", JSON.stringify([filmToAdd]))
+        storeWatchlist([filmToAdd]);
         document.getElementById(`watchlist-${filmID}`).innerHTML = `<i class="fa-solid fa-square-minus"></i>
                                                                     <p>Remove</p>`
     }
@@ -101,16 +104,18 @@ function storeWatchlist(watchlist) {
     localStorage.setItem("watchlist", JSON.stringify(watchlist));
 }
 
+function getWatchlist() {
+    return JSON.parse(localStorage.getItem("watchlist"));
+}
+
 function isAlreadyInWatchlist(filmToCheck) {
     if (localStorage.getItem("watchlist")) {
-        let watchlist = JSON.parse(localStorage.getItem("watchlist"));
+        let watchlist = getWatchlist();
         for (let film of watchlist) {
             if (filmToCheck === film.imdbID) {
-                console.log("Already added!");
                 return true;
             }
         }
-        console.log("It's new!");
         return false;
     }
 }

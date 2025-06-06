@@ -36,17 +36,19 @@ header {
     font-size: 2.75rem;
 }
 
-nav {
+nav a {
     font-size: 1.25rem;
+    text-decoration: none;
+    color: #fff;
 }
 
-nav,
+nav a,
 .search-btn {
     cursor: pointer;
 }
 
-nav:hover,
-nav:focus {
+nav a:hover,
+nav a:focus {
     color: #FF5765;
 }
 
@@ -101,11 +103,10 @@ form {
 .film-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     min-height: 80vh;
-    margin-top: 5em;
-    margin-bottom: 5em;
+    padding-top: 5em;
+    padding-bottom: 5em;
 }
 
 .fa-film,
@@ -119,6 +120,7 @@ form {
 
 .placeholder-text {
     font-size: 1.125rem;
+    font-weight: 700;
     margin: 0;
 }
 
@@ -178,7 +180,7 @@ hr {
 
 .add-to-watchlist:hover,
 .add-to-watchilist:focus {
-    color: #FF5765;;
+    color: #FF5765;
     cursor: pointer;
 }
 
@@ -218,6 +220,19 @@ hr:last-child {
     display: none;
 }
 
+/* WATCHLIST SPECIFIC */
+.watchlist-prompt {
+    display:flex;
+    align-items: center;
+    margin-top: 0.5em;
+    gap: 0.5em;
+    text-decoration: none;
+    color: #000;
+}
+
+.watchlist-prompt:hover {
+    color: #FF5765;
+}
 
 /* MEDIA QUERIES */
 
