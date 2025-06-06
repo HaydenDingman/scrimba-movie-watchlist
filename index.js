@@ -1,6 +1,5 @@
 const filmSearchInput = document.getElementById("film-search");
 const filmContainer = document.getElementById("film-container");
-const placeholder = document.getElementById("placeholder");
 
 
 filmContainer.addEventListener("click", (e) => {
@@ -15,7 +14,7 @@ document.addEventListener("submit", (e) => {
 })
 
 async function fetchSearchResults() {
-    placeholder.innerHTML = `<p class="placeholder-text">Fetching results...</p>`
+    filmContainer.innerHTML = `<div class="placeholder"><p class="placeholder-text">Fetching results...</p></div>`
     
     const res = await fetch(`https://www.omdbapi.com/?apikey=32eb1eab&s=${filmSearchInput.value}&plot=full`);
     const films = await res.json();
